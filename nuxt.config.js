@@ -32,6 +32,10 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    {
+      src: '~plugins/amplify.ts',
+      ssr: false
+    }
   ],
   /*
   ** Nuxt.js dev-modules

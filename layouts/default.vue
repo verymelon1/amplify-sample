@@ -79,6 +79,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+    <amplify-sign-out v-if="signin" class="btnSignOut" />
     <v-footer
       :absolute="!fixed"
       app
@@ -88,30 +89,43 @@
   </v-app>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import { AmplifyEventBus } from 'aws-amplify-vue'
+
+@Component
+export default class Default extends Vue {
+  private title: string = 'Sample';
+  private items: any = [
+    {
+      icon: 'mdi-apps',
+      title: 'Home',
+      to: '/'
     }
+  ];
+
+  private clipped: boolean = false
+  private drawer: boolean = false
+  private right: boolean = false
+  private rightDrawer: boolean = false
+  private fixed: boolean = false
+  private miniVariant: boolean = false
+
+  private signin = false
+
+  created () {
+    AmplifyEventBus.$on('authState', async (info: any) => {
+      if (info === 'signedIn') {
+        const userInfo: any = await Vue.prototype.$Amplify.Auth.currentUserInfo()
+        console.log(userInfo)
+        this.signin = true
+        this.$router.push('/')
+        this.$router.push('/signin')
+      } else if (info === 'signedOut') {
+        this.signin = false
+        this.$router.push('/signin')
+      }
+    })
   }
 }
 </script>
