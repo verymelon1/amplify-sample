@@ -17,16 +17,16 @@
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "aws-amplify": "^3.0.18",
     "aws-amplify-vue": "^2.1.1",
-    "nuxt": "^2.13.0",
+    "nuxt": "^3.0.0",
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^9.0.0"
   },
   "devDependencies": {
-    "@nuxt/typescript-build": "^1.0.3",
+    "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/eslint-config": "^3.0.0",
     "@nuxtjs/eslint-config-typescript": "^2.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
-    "@nuxtjs/vuetify": "^1.11.2",
+    "@nuxtjs/vuetify": "^1.12.3",
     "@vue/test-utils": "^1.0.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
@@ -35,6 +35,6 @@
     "eslint-plugin-nuxt": "^1.0.0",
     "jest": "^26.0.1",
     "ts-jest": "^26.1.0",
-    "vue-jest": "^3.0.4"
+    "vue-jest": "^4.0.1"
   }
 }
